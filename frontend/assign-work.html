@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Work</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7f6;
+        }
+
+        nav {
+            background: #198754;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #198754;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .assign-btn {
+            width: 100%;
+            padding: 13px;
+            margin-top: 25px;
+            background: #198754;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .assign-btn:hover {
+            background: #146c43;
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            background: #d1e7dd;
+            color: #0f5132;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav h2 {
+                font-size: 19px;
+            }
+
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h2>Admin Dashboard</h2>
+
+        <div>
+            <a href="admin.html">Dashboard</a>
+            <a href="collector.html">Collector</a>
+        </div>
+    </nav>
+
+
+    <!-- Assign Work Form -->
+    <div class="container">
+
+        <div class="form-box">
+
+            <h1>Assign Work</h1>
+            <p class="subtitle">
+                Assign a collection job to a collector.
+            </p>
+
+            <form id="assignForm">
+
+                <!-- Select Collector -->
+                <label for="collector">Select Collector</label>
+
+                <select id="collector" required>
+                    <option value="">-- Select Collector --</option>
+                    <option value="Rahul">Rahul</option>
+                    <option value="Amit">Amit</option>
+                    <option value="Priya">Priya</option>
+                    <option value="Sanjay">Sanjay</option>
+                </select>
+
+
+                <!-- Customer Name -->
+                <label for="customer">Customer Name</label>
+
+                <input
+                    type="text"
+                    id="customer"
+                    placeholder="Enter customer name"
+                    required
+                >
+
+
+                <!-- Address -->
+                <label for="address">Collection Address</label>
+
+                <textarea
+                    id="address"
+                    placeholder="Enter complete collection address"
+                    required
+                ></textarea>
+
+
+                <!-- Date -->
+                <label for="date">Collection Date</label>
+
+                <input
+                    type="date"
+                    id="date"
+                    required
+                >
+
+
+                <!-- Waste Type -->
+                <label for="wasteType">Waste Type</label>
+
+                <select id="wasteType" required>
+                    <option value="">-- Select Waste Type --</option>
+                    <option value="Plastic">Plastic</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Electronic Waste">Electronic Waste</option>
+                    <option value="Organic Waste">Organic Waste</option>
+                    <option value="Mixed Waste">Mixed Waste</option>
+                </select>
+
+
+                <!-- Additional Instructions -->
+                <label for="instructions">
+                    Additional Instructions
+                </label>
+
+                <textarea
+                    id="instructions"
+                    placeholder="Enter any special instructions..."
+                ></textarea>
+
+
+                <!-- Submit -->
+                <button type="submit" class="assign-btn">
+                    Assign Work
+                </button>
+
+            </form>
+
+            <div class="message" id="message">
+                Work successfully assigned!
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        document
+            .getElementById("assignForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                // Get form values
+                const collector =
+                    document.getElementById("collector").value;
+
+                const customer =
+                    document.getElementById("customer").value;
+
+                const address =
+                    document.getElementById("address").value;
+
+                const date =
+                    document.getElementById("date").value;
+
+                const wasteType =
+                    document.getElementById("wasteType").value;
+
+                const instructions =
+                    document.getElementById("instructions").value;
+
+
+                // Create job
+                const job = {
+
+                    id: "JOB-" + Date.now(),
+
+                    collector: collector,
+
+                    customer: customer,
+
+                    address: address,
+
+                    date: date,
+
+                    wasteType: wasteType,
+
+                    instructions: instructions,
+
+                    status: "Pending"
+
+                };
+
+
+                // Get existing jobs
+                let jobs =
+                    JSON.parse(localStorage.getItem("jobs")) || [];
+
+
+                // Add new job
+                jobs.push(job);
+
+
+                // Save jobs
+                localStorage.setItem(
+                    "jobs",
+                    JSON.stringify(jobs)
+                );
+
+
+                // Show success message
+                document.getElementById("message").style.display =
+                    "block";
+
+
+                // Reset form
+                document.getElementById("assignForm").reset();
+
+            });
+
+    </script>
+
+</body>
+</html>

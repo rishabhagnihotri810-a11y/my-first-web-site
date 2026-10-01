@@ -1,0 +1,97 @@
+<div id="jobsContainer"></div>
+
+<script>
+    const collectorName = "Rahul";
+
+    const jobs =
+        JSON.parse(localStorage.getItem("jobs")) || [];
+
+    const myJobs = jobs.filter(
+        job => job.collector === collectorName
+    );
+
+    const container =
+        document.getElementById("jobsContainer");
+
+    if (myJobs.length === 0) {
+
+        container.innerHTML =
+            "<p>No jobs assigned to you.</p>";
+
+    } else {
+
+        myJobs.forEach(job => {
+
+            container.innerHTML += `
+                <div class="job-card">
+
+                    <div class="job-header">
+                        <h3>${job.id}</h3>
+                        <span class="status">
+                            ${job.status}
+                        </span>
+                    </div>
+
+                    <div class="job-info">
+
+                        <p>
+                            <strong>Customer:</strong>
+                            ${job.customer}
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong>
+                            ${job.address}
+                        </p>
+
+                        <p>
+                            <strong>Date:</strong>
+                            ${job.date}
+                        </p>
+
+                        <p>
+                            <strong>Waste Type:</strong>
+                            ${job.wasteType}
+                        </p>
+
+                        <p>
+                            <strong>Instructions:</strong>
+                            ${job.instructions || "None"}
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="complete-btn"
+                        onclick="completeJob('${job.id}')">
+                        Mark as Completed
+                    </button>
+
+                </div>
+            `;
+        });
+    }
+
+
+    function completeJob(jobId) {
+
+        let jobs =
+            JSON.parse(localStorage.getItem("jobs")) || [];
+
+        jobs = jobs.map(job => {
+
+            if (job.id === jobId) {
+                job.status = "Completed";
+            }
+
+            return job;
+        });
+
+        localStorage.setItem(
+            "jobs",
+            JSON.stringify(jobs)
+        );
+
+        location.reload();
+    }
+</script>
