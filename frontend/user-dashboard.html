@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard | EcoClean</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+<body class="dashboard-body">
+
+<div class="dashboard-wrapper">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+        ♻ EcoClean
+    </div>
+
+    <div class="sidebar-section-title">
+        MAIN MENU
+    </div>
+
+    <div class="sidebar-menu">
+
+        <a href="user-dashboard.html" class="active">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="complaint.html">
+            <i class="fa-solid fa-plus"></i>
+            Report Garbage
+        </a>
+
+        <a href="my-complaints.html">
+            <i class="fa-solid fa-list-check"></i>
+            My Complaints
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-section-title">
+        INFORMATION
+    </div>
+
+    <div class="sidebar-menu">
+
+        <a href="index.html#guidelines">
+            <i class="fa-solid fa-leaf"></i>
+            Guidelines
+        </a>
+
+        <a href="index.html#about">
+            <i class="fa-solid fa-circle-info"></i>
+            About
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-menu">
+
+            <a href="login.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="dashboard-main">
+
+
+<header class="dashboard-topbar">
+
+    <h3>Citizen Dashboard</h3>
+
+    <div class="profile">
+
+        <div class="profile-avatar">
+            RK
+        </div>
+
+        <div>
+
+            <div class="profile-name">
+                Rahul Kumar
+            </div>
+
+            <div class="profile-role">
+                Citizen
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="dashboard-content">
+
+
+<div class="page-title">
+
+    <h1>
+        Welcome back, Rahul 👋
+    </h1>
+
+    <p>
+        Monitor your waste complaints and help keep your
+        community clean.
+    </p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div>
+                <p>Total Complaints</p>
+                <h2>12</h2>
+            </div>
+
+            <div class="stat-icon green">
+                <i class="fa-solid fa-file"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div>
+                <p>Pending</p>
+                <h2>3</h2>
+            </div>
+
+            <div class="stat-icon orange">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div>
+                <p>In Progress</p>
+                <h2>2</h2>
+            </div>
+
+            <div class="stat-icon purple">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div>
+                <p>Resolved</p>
+                <h2>7</h2>
+            </div>
+
+            <div class="stat-icon green">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- STATUS OVERVIEW -->
+
+<div class="status-overview">
+
+    <div class="status-box reported">
+
+        <span>Reported</span>
+        <strong>3</strong>
+
+    </div>
+
+    <div class="status-box assigned">
+
+        <span>Assigned</span>
+        <strong>1</strong>
+
+    </div>
+
+    <div class="status-box progress">
+
+        <span>In Progress</span>
+        <strong>2</strong>
+
+    </div>
+
+    <div class="status-box verify">
+
+        <span>Verification</span>
+        <strong>0</strong>
+
+    </div>
+
+    <div class="status-box completed">
+
+        <span>Resolved</span>
+        <strong>7</strong>
+
+    </div>
+
+</div>
+
+
+<!-- RECENT COMPLAINTS -->
+
+<div class="content-card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>Recent Complaints</h3>
+
+            <p>Your latest garbage reports</p>
+
+        </div>
+
+        <a
+            href="complaint.html"
+            class="btn btn-primary"
+        >
+            <i class="fa-solid fa-plus"></i>
+            New Complaint
+        </a>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table class="data-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Location</th>
+                    <th>Waste Type</th>
+                    <th>Collector</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td><strong>#GC1024</strong></td>
+
+                    <td>Main Market</td>
+
+                    <td>Mixed Waste</td>
+
+                    <td>Ajay Singh</td>
+
+                    <td>
+                        <span class="status-badge status-progress">
+                            In Progress
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <a
+                            href="my-complaints.html"
+                            class="action-btn"
+                        >
+                            Track
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><strong>#GC1020</strong></td>
+
+                    <td>Sector 4</td>
+
+                    <td>Plastic</td>
+
+                    <td>Vikas Sharma</td>
+
+                    <td>
+                        <span class="status-badge status-completed">
+                            Resolved
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <a
+                            href="my-complaints.html"
+                            class="action-btn"
+                        >
+                            View
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td><strong>#GC1018</strong></td>
+
+                    <td>Station Road</td>
+
+                    <td>Organic</td>
+
+                    <td>Not Assigned</td>
+
+                    <td>
+                        <span class="status-badge status-pending">
+                            Reported
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <a
+                            href="my-complaints.html"
+                            class="action-btn"
+                        >
+                            Track
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

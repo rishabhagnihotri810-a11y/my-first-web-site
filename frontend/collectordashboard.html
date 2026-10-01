@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="style.css">
+
+<div class="admin-profile">
+    <div class="profile-circle">c</div>
+    <div>
+        <strong>Waste Collector</strong>
+        <small>Field Staff</small>
+    </div>
+</div>
+
+<!-- Navigation Menu -->
+<nav class="sidebar-menu">
+    <a href="#" class="menu-item active" onclick="showSection('dashboard', this)">
+        <span>Dashboard</span>
+    </a>
+    <a href="#" class="menu-item" onclick="showSection('assigned', this)">
+        <span>Assigned Pickups</span>
+    </a>
+    <a href="#" class="menu-item" onclick="showSection('completed', this)">
+        <span>Completed Tasks</span>
+    </a>
+    <a href="login.html" class="menu-item">
+        <span>Logout</span>
+    </a>
+</nav>
+
+<hr>
+
+<!-- Content Sections -->
+<main class="main-content">
+    <!-- 1. Dashboard Section -->
+    <section id="dashboard-section">
+        <h2>Collector Dashboard</h2>
+        <p>Pending Pickups: 5</p>
+        <p>Completed Today: 12</p>
+    </section>
+
+    <!-- 2. Assigned Pickups Section -->
+    <section id="assigned-section" style="display: none;">
+        <h2>Assigned Pickups</h2>
+        <p>Yahan saare assigned pickups ki list aayegi.</p>
+    </section>
+
+    <!-- 3. Completed Tasks Section -->
+    <section id="completed-section" style="display: none;">
+        <h2>Completed Tasks</h2>
+        <p>Yahan saare completed tasks ki list aayegi.</p>
+    </section>
+</main>
+
+<!-- Navigation Switch Logic -->
+<script>
+function showSection(sectionName, element) {
+    // 1. Saare sections hide karein
+    document.getElementById('dashboard-section').style.display = 'none';
+    document.getElementById('assigned-section').style.display = 'none';
+    document.getElementById('completed-section').style.display = 'none';
+
+    // 2. Active menu style reset karein
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => item.classList.remove('active'));
+
+    // 3. Selected section show karein aur active class add karein
+    document.getElementById(sectionName + '-section').style.display = 'block';
+    element.classList.add('active');
+}
+</script>

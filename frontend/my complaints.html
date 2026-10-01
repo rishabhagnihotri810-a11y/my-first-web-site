@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complaints | CleanCity</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">♻</span>
+            <span>CleanCity</span>
+        </div>
+
+        <div class="admin-profile">
+
+            <div class="profile-circle">
+                A
+            </div>
+
+            <div>
+                <strong>Administrator</strong>
+                <small>System Admin</small>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-menu">
+
+            <a href="admin-dashboard.html" class="menu-item">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="complaints.html" class="menu-item active">
+                <span>📋</span>
+                Complaints
+            </a>
+
+            <a href="assign-work.html" class="menu-item">
+                <span>👷</span>
+                Assign Work
+            </a>
+
+            <a href="collectors.html" class="menu-item">
+                <span>🚛</span>
+                Collectors
+            </a>
+
+            <a href="tracking.html" class="menu-item">
+                <span>📍</span>
+                Work Tracking
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="menu-item">
+                <span>⚙️</span>
+                Settings
+            </a>
+
+            <a href="login.html" class="menu-item logout">
+                <span>🚪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Complaints</h1>
+
+                <p>
+                    Manage and monitor citizen waste complaints.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="notification-btn">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="admin-mini">
+
+                    <div class="profile-circle small">
+                        A
+                    </div>
+
+                    <span>Admin</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>
+                    Citizen Complaints
+                </h2>
+
+                <p>
+                    View, filter and manage reported waste problems.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="openComplaintModal()">
+
+                + Add Complaint
+
+            </button>
+
+        </div>
+
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📋
+                </div>
+
+                <div>
+
+                    <p>Total Complaints</p>
+
+                    <h2 id="totalComplaints">
+                        128
+                    </h2>
+
+                    <small>
+                        All complaints
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <p>Pending</p>
+
+                    <h2 id="pendingComplaints">
+                        34
+                    </h2>
+
+                    <small>
+                        Awaiting assignment
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    🚛
+                </div>
+
+                <div>
+
+                    <p>In Progress</p>
+
+                    <h2>
+                        20
+                    </h2>
+
+                    <small>
+                        Currently assigned
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✅
+                </div>
+
+                <div>
+
+                    <p>Completed</p>
+
+                    <h2>
+                        74
+                    </h2>
+
+                    <small class="positive">
+                        Successfully resolved
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COMPLAINT TABLE -->
+
+        <div class="dashboard-card">
+
+
+            <!-- FILTER BAR -->
+
+            <div class="complaint-filter-bar">
+
+                <div class="search-box">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchComplaint"
+                        placeholder="Search by ID, citizen, location..."
+                        onkeyup="filterComplaints()">
+
+                </div>
+
+
+                <select
+                    id="statusFilter"
+                    onchange="filterComplaints()">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="progress">
+                        In Progress
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="priorityFilter"
+                    onchange="filterComplaints()">
+
+                    <option value="all">
+                        All Priority
+                    </option>
+
+                    <option value="high">
+                        High
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="low">
+                        Low
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="outline-btn"
+                    onclick="resetFilters()">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-container">
+
+                <table id="complaintsTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Complaint ID
+                            </th>
+
+                            <th>
+                                Citizen
+                            </th>
+
+                            <th>
+                                Complaint
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Priority
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Collector
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- COMPLAINT 1 -->
+
+                        <tr
+                            data-status="pending"
+                            data-priority="high">
+
+                            <td>
+                                <strong>
+                                    #WM001
+                                </strong>
+                            </td>
+
+                            <td>
+                                Rahul Kumar
+                            </td>
+
+                            <td>
+                                Garbage Dump
+                            </td>
+
+                            <td>
+                                Station Road
+                            </td>
+
+                            <td>
+
+                                <span class="priority high">
+                                    High
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Not Assigned
+                            </td>
+
+                            <td>
+                                20 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-btn"
+                                    onclick="viewComplaint('WM001')">
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- COMPLAINT 2 -->
+
+                        <tr
+                            data-status="progress"
+                            data-priority="medium">
+
+                            <td>
+                                <strong>
+                                    #WM002
+                                </strong>
+                            </td>
+
+                            <td>
+                                Priya Singh
+                            </td>
+
+                            <td>
+                                Overflowing Dustbin
+                            </td>
+
+                            <td>
+                                Gandhi Nagar
+                            </td>
+
+                            <td>
+
+                                <span class="priority medium">
+                                    Medium
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Raj Kumar
+                            </td>
+
+                            <td>
+                                20 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-btn"
+                                    onclick="viewComplaint('WM002')">
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- COMPLAINT 3 -->
+
+                        <tr
+                            data-status="completed"
+                            data-priority="low">
+
+                            <td>
+                                <strong>
+                                    #WM003
+                                </strong>
+                            </td>
+
+                            <td>
+                                Amit Sharma
+                            </td>
+
+                            <td>
+                                Roadside Waste
+                            </td>
+
+                            <td>
+                                Bus Stand
+                            </td>
+
+                            <td>
+
+                                <span class="priority low">
+                                    Low
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status completed">
+                                    Completed
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Anil Singh
+                            </td>
+
+                            <td>
+                                19 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-btn"
+                                    onclick="viewComplaint('WM003')">
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- COMPLAINT 4 -->
+
+                        <tr
+                            data-status="pending"
+                            data-priority="medium">
+
+                            <td>
+                                <strong>
+                                    #WM004
+                                </strong>
+                            </td>
+
+                            <td>
+                                Neha Verma
+                            </td>
+
+                            <td>
+                                Plastic Waste
+                            </td>
+
+                            <td>
+                                Market Area
+                            </td>
+
+                            <td>
+
+                                <span class="priority medium">
+                                    Medium
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Not Assigned
+                            </td>
+
+                            <td>
+                                19 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-btn"
+                                    onclick="viewComplaint('WM004')">
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- COMPLAINT 5 -->
+
+                        <tr
+                            data-status="progress"
+                            data-priority="high">
+
+                            <td>
+                                <strong>
+                                    #WM005
+                                </strong>
+                            </td>
+
+                            <td>
+                                Saurabh Gupta
+                            </td>
+
+                            <td>
+                                Construction Waste
+                            </td>
+
+                            <td>
+                                Civil Lines
+                            </td>
+
+                            <td>
+
+                                <span class="priority high">
+                                    High
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Vikas Kumar
+                            </td>
+
+                            <td>
+                                18 Sep 2026
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-btn"
+                                    onclick="viewComplaint('WM005')">
+
+                                    View
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- COMPLAINT DETAILS MODAL -->
+
+    <div
+        class="modal"
+        id="complaintModal">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeComplaintModal()">
+
+                ×
+
+            </button>
+
+
+            <h2>
+                Complaint Details
+            </h2>
+
+
+            <div class="complaint-details">
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Complaint ID
+                    </span>
+
+                    <strong id="modalId">
+                        #WM001
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Citizen
+                    </span>
+
+                    <strong id="modalCitizen">
+                        Rahul Kumar
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong id="modalLocation">
+                        Station Road
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Complaint
+                    </span>
+
+                    <strong id="modalComplaint">
+                        Garbage Dump
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Priority
+                    </span>
+
+                    <span
+                        class="priority high"
+                        id="modalPriority">
+
+                        High
+
+                    </span>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Status
+                    </span>
+
+                    <span
+                        class="status pending"
+                        id="modalStatus">
+
+                        Pending
+
+                    </span>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Collector
+                    </span>
+
+                    <strong id="modalCollector">
+                        Not Assigned
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        Reported On
+                    </span>
+
+                    <strong id="modalDate">
+                        20 Sep 2026
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="primary-btn"
+                    onclick="assignSelectedComplaint()">
+
+                    👷 Assign Collector
+
+                </button>
+
+                <button
+                    class="outline-btn"
+                    onclick="closeComplaintModal()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/complaints.js"></script>
+
+</body>
+
+</html>

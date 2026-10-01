@@ -1,0 +1,985 @@
+<!-- SIDEBAR -->
+
+ <link rel="stylesheet" href="style.css">
+<aside class="sidebar">
+<a href="admindashboard.html" >dashboard</a>
+<a href="complaints.html" >complaints</a>
+<a href="assign-work.html" >assign work</a>
+    <div class="logo">
+        <span class="logo-icon">♻</span>
+        <span>CleanCity</span>
+    </div>
+
+    <div class="admin-profile">
+        <div class="profile-circle">A</div>
+        <div>
+            <strong>Administrator</strong>
+            <small>System Admin</small>
+        </div>
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <a href="#" class="menu-item active" onclick="showSection('dashboard')">
+            <span>📊</span>
+            Dashboard
+        </a>
+
+        <a href="#" class="menu-item" onclick="showSection('complaints')">
+            <span>📋</span>
+            Complaints
+        </a>
+
+        <a href="#" class="menu-item" onclick="showSection('assign')">
+            <span>👷</span>
+            Assign Work
+        </a>
+
+        <a href="#" class="menu-item" onclick="showSection('collectors')">
+            <span>🚛</span>
+            Collectors
+        </a>
+
+        <a href="#" class="menu-item" onclick="showSection('tracking')">
+            <span>📍</span>
+            Work Tracking
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="#" class="menu-item">
+            <span>⚙️</span>
+            Settings
+        </a>
+
+        <a href="login.html" class="menu-item logout">
+            <span>🚪</span>
+            Logout
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div>
+            <h1 id="pageTitle">Admin Dashboard</h1>
+            <p>Monitor and manage waste collection activities.</p>
+        </div>
+
+        <div class="topbar-right">
+
+            <button class="notification-btn">
+                🔔
+                <span class="notification-dot"></span>
+            </button>
+
+            <div class="admin-mini">
+                <div class="profile-circle small">A</div>
+                <span>Admin</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+    <section id="dashboard" class="dashboard-section">
+
+        <!-- STATISTICS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">📋</div>
+
+                <div>
+                    <p>Total Complaints</p>
+                    <h2 id="totalComplaints">128</h2>
+                    <small class="positive">↑ 12% this month</small>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon orange">⏳</div>
+
+                <div>
+                    <p>Pending Complaints</p>
+                    <h2 id="pendingComplaints">34</h2>
+                    <small>Needs attention</small>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon purple">👷</div>
+
+                <div>
+                    <p>Assigned Work</p>
+                    <h2>56</h2>
+                    <small>Currently assigned</small>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon green">✅</div>
+
+                <div>
+                    <p>Completed</p>
+                    <h2>94</h2>
+                    <small class="positive">73% completion rate</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- RECENT COMPLAINTS -->
+
+        <div class="content-grid">
+
+            <div class="dashboard-card large">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Recent Complaints</h3>
+                        <p>Latest complaints submitted by citizens</p>
+                    </div>
+
+                    <button class="outline-btn"
+                            onclick="showSection('complaints')">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Citizen</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>#WM001</td>
+                                <td>Rahul Kumar</td>
+                                <td>Station Road</td>
+                                <td>20 Sep 2026</td>
+
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button class="action-btn"
+                                            onclick="openAssignModal('WM001')">
+                                        Assign
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>#WM002</td>
+                                <td>Priya Singh</td>
+                                <td>Gandhi Nagar</td>
+                                <td>20 Sep 2026</td>
+
+                                <td>
+                                    <span class="status progress">
+                                        In Progress
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button class="action-btn">
+                                        Track
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>#WM003</td>
+                                <td>Amit Sharma</td>
+                                <td>Bus Stand</td>
+                                <td>19 Sep 2026</td>
+
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button class="action-btn">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>#WM004</td>
+                                <td>Neha Verma</td>
+                                <td>Market Area</td>
+                                <td>19 Sep 2026</td>
+
+                                <td>
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <button class="action-btn"
+                                            onclick="openAssignModal('WM004')">
+                                        Assign
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- COLLECTOR STATUS -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Collector Status</h3>
+                        <p>Live workforce overview</p>
+                    </div>
+
+                </div>
+
+
+                <div class="collector-list">
+
+                    <div class="collector-item">
+
+                        <div class="collector-avatar green-bg">
+                            RK
+                        </div>
+
+                        <div class="collector-info">
+                            <strong>Raj Kumar</strong>
+                            <span>Zone A</span>
+                        </div>
+
+                        <span class="online-dot"></span>
+
+                    </div>
+
+
+                    <div class="collector-item">
+
+                        <div class="collector-avatar blue-bg">
+                            AS
+                        </div>
+
+                        <div class="collector-info">
+                            <strong>Anil Singh</strong>
+                            <span>Zone B</span>
+                        </div>
+
+                        <span class="online-dot"></span>
+
+                    </div>
+
+
+                    <div class="collector-item">
+
+                        <div class="collector-avatar orange-bg">
+                            VK
+                        </div>
+
+                        <div class="collector-info">
+                            <strong>Vikas Kumar</strong>
+                            <span>Zone C</span>
+                        </div>
+
+                        <span class="offline-dot"></span>
+
+                    </div>
+
+
+                    <div class="collector-item">
+
+                        <div class="collector-avatar purple-bg">
+                            PS
+                        </div>
+
+                        <div class="collector-info">
+                            <strong>Prakash Singh</strong>
+                            <span>Zone D</span>
+                        </div>
+
+                        <span class="online-dot"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WORK PROGRESS -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Waste Collection Progress</h3>
+                    <p>Overall work completion statistics</p>
+                </div>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-label">
+                    <span>Today's Collection</span>
+                    <strong>78%</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill green-fill"
+                         style="width: 78%">
+                    </div>
+                </div>
+
+
+                <div class="progress-label">
+                    <span>Weekly Target</span>
+                    <strong>64%</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill blue-fill"
+                         style="width: 64%">
+                    </div>
+                </div>
+
+
+                <div class="progress-label">
+                    <span>Monthly Target</span>
+                    <strong>82%</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill purple-fill"
+                         style="width: 82%">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COMPLAINTS ================= -->
+
+    <section id="complaints" class="dashboard-section hidden">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>All Complaints</h2>
+                <p>Manage complaints reported by citizens.</p>
+            </div>
+
+            <button class="primary-btn">
+                + New Complaint
+            </button>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="filter-bar">
+
+                <input
+                    type="text"
+                    id="complaintSearch"
+                    placeholder="Search complaints..."
+                    onkeyup="searchComplaints()"
+                >
+
+                <select>
+                    <option>All Status</option>
+                    <option>Pending</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                </select>
+
+                <select>
+                    <option>All Zones</option>
+                    <option>Zone A</option>
+                    <option>Zone B</option>
+                    <option>Zone C</option>
+                    <option>Zone D</option>
+                </select>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table id="complaintTable">
+
+                    <thead>
+                        <tr>
+                            <th>Complaint ID</th>
+                            <th>Citizen</th>
+                            <th>Complaint</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Collector</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>#WM001</td>
+                            <td>Rahul Kumar</td>
+                            <td>Garbage dump</td>
+                            <td>Station Road</td>
+
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+
+                            <td>Not Assigned</td>
+
+                            <td>
+                                <button class="action-btn"
+                                        onclick="openAssignModal('WM001')">
+                                    Assign
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>#WM002</td>
+                            <td>Priya Singh</td>
+                            <td>Overflowing dustbin</td>
+                            <td>Gandhi Nagar</td>
+
+                            <td>
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+                            </td>
+
+                            <td>Raj Kumar</td>
+
+                            <td>
+                                <button class="action-btn">
+                                    Track
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>#WM003</td>
+                            <td>Amit Sharma</td>
+                            <td>Roadside waste</td>
+                            <td>Bus Stand</td>
+
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+
+                            <td>Anil Singh</td>
+
+                            <td>
+                                <button class="action-btn">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ASSIGN WORK ================= -->
+
+    <section id="assign" class="dashboard-section hidden">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Assign Work</h2>
+                <p>Assign complaints to available waste collectors.</p>
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <form id="assignForm" onsubmit="assignWork(event)">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Complaint ID</label>
+
+                        <input
+                            type="text"
+                            id="complaintId"
+                            placeholder="Example: WM001"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Select Collector</label>
+
+                        <select id="collectorName" required>
+
+                            <option value="">
+                                Select Collector
+                            </option>
+
+                            <option value="Raj Kumar">
+                                Raj Kumar - Zone A
+                            </option>
+
+                            <option value="Anil Singh">
+                                Anil Singh - Zone B
+                            </option>
+
+                            <option value="Vikas Kumar">
+                                Vikas Kumar - Zone C
+                            </option>
+
+                            <option value="Prakash Singh">
+                                Prakash Singh - Zone D
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Priority</label>
+
+                        <select required>
+
+                            <option>Normal</option>
+                            <option>High</option>
+                            <option>Urgent</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Deadline</label>
+
+                        <input
+                            type="date"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Instructions</label>
+
+                    <textarea
+                        placeholder="Enter instructions for the collector..."
+                        rows="4">
+                    </textarea>
+
+                </div>
+
+
+                <button class="primary-btn" type="submit">
+                    Assign Work
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COLLECTORS ================= -->
+
+    <section id="collectors" class="dashboard-section hidden">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Collectors</h2>
+                <p>Manage your waste collection team.</p>
+            </div>
+
+            <button class="primary-btn">
+                + Add Collector
+            </button>
+
+        </div>
+
+
+        <div class="collector-cards">
+
+            <div class="collector-card">
+
+                <div class="collector-avatar large green-bg">
+                    RK
+                </div>
+
+                <h3>Raj Kumar</h3>
+
+                <p>Zone A Collector</p>
+
+                <span class="status completed">
+                    Available
+                </span>
+
+                <div class="collector-stats">
+                    <div>
+                        <strong>18</strong>
+                        <small>Completed</small>
+                    </div>
+
+                    <div>
+                        <strong>2</strong>
+                        <small>Pending</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="collector-card">
+
+                <div class="collector-avatar large blue-bg">
+                    AS
+                </div>
+
+                <h3>Anil Singh</h3>
+
+                <p>Zone B Collector</p>
+
+                <span class="status progress">
+                    Working
+                </span>
+
+                <div class="collector-stats">
+                    <div>
+                        <strong>22</strong>
+                        <small>Completed</small>
+                    </div>
+
+                    <div>
+                        <strong>1</strong>
+                        <small>Pending</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="collector-card">
+
+                <div class="collector-avatar large orange-bg">
+                    VK
+                </div>
+
+                <h3>Vikas Kumar</h3>
+
+                <p>Zone C Collector</p>
+
+                <span class="status pending">
+                    Offline
+                </span>
+
+                <div class="collector-stats">
+                    <div>
+                        <strong>15</strong>
+                        <small>Completed</small>
+                    </div>
+
+                    <div>
+                        <strong>4</strong>
+                        <small>Pending</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TRACKING ================= -->
+
+    <section id="tracking" class="dashboard-section hidden">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Work Tracking</h2>
+                <p>Track complaints from reporting to completion.</p>
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="tracking-item">
+
+                <div class="tracking-id">
+                    #WM001
+                </div>
+
+                <div class="tracking-content">
+
+                    <h3>Garbage dump at Station Road</h3>
+
+                    <p>
+                        Assigned to Raj Kumar
+                    </p>
+
+                    <div class="timeline">
+
+                        <div class="timeline-step completed-step">
+                            <span>✓</span>
+                            <p>Reported</p>
+                        </div>
+
+                        <div class="timeline-line active-line"></div>
+
+                        <div class="timeline-step completed-step">
+                            <span>✓</span>
+                            <p>Assigned</p>
+                        </div>
+
+                        <div class="timeline-line active-line"></div>
+
+                        <div class="timeline-step active-step">
+                            <span>●</span>
+                            <p>In Progress</p>
+                        </div>
+
+                        <div class="timeline-line"></div>
+
+                        <div class="timeline-step">
+                            <span>○</span>
+                            <p>Completed</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="tracking-item">
+
+                <div class="tracking-id">
+                    #WM002
+                </div>
+
+                <div class="tracking-content">
+
+                    <h3>Overflowing dustbin</h3>
+
+                    <p>
+                        Assigned to Anil Singh
+                    </p>
+
+                    <div class="timeline">
+
+                        <div class="timeline-step completed-step">
+                            <span>✓</span>
+                            <p>Reported</p>
+                        </div>
+
+                        <div class="timeline-line active-line"></div>
+
+                        <div class="timeline-step completed-step">
+                            <span>✓</span>
+                            <p>Assigned</p>
+                        </div>
+
+                        <div class="timeline-line active-line"></div>
+
+                        <div class="timeline-step completed-step">
+                            <span>✓</span>
+                            <p>In Progress</p>
+                        </div>
+
+                        <div class="timeline-line active-line"></div>
+
+                        <div class="timeline-step completed-step">
+                            <span>✓</span>
+                            <p>Completed</p>
+                        </div>
+
+                    </div>
+
+                    <button class="view-photo-btn">
+                        📷 View Completion Photo
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ASSIGN MODAL -->
+
+<div id="assignModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal"
+                onclick="closeAssignModal()">
+            ×
+        </button>
+
+        <h2>Assign Complaint</h2>
+
+        <p>
+            Assign complaint
+            <strong id="selectedComplaint">
+                #WM001
+            </strong>
+            to a collector.
+        </p>
+
+
+        <form onsubmit="assignFromModal(event)">
+
+            <div class="form-group">
+
+                <label>Collector</label>
+
+                <select id="modalCollector" required>
+
+                    <option value="">
+                        Select Collector
+                    </option>
+
+                    <option>Raj Kumar</option>
+                    <option>Anil Singh</option>
+                    <option>Vikas Kumar</option>
+                    <option>Prakash Singh</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Priority</label>
+
+                <select>
+
+                    <option>Normal</option>
+                    <option>High</option>
+                    <option>Urgent</option>
+
+                </select>
+
+            </div>
+
+
+            <button type="submit"
+                    class="primary-btn full-width">
+                Assign Complaint
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="js/script.js"></script>
